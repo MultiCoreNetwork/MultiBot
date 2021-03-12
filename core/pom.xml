@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <artifactId>MultiBot</artifactId>
+        <groupId>it.multicoredev.dsmb</groupId>
+        <version>0.0.1</version>
+    </parent>
+
+    <artifactId>core</artifactId>
+
+    <organization>
+        <name>MultiCore Network</name>
+        <url>https://multicore.network</url>
+    </organization>
+
+    <licenses>
+        <license>
+            <name>The BSD 3-Clause License</name>
+            <url>http://opensource.org/licenses/BSD-3-Clause</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <id>LoreSchaeffer</id>
+            <name>Lorenzo Magni</name>
+            <url>https://github.com/LoreSchaeffer</url>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:git@github.com:MultiCoreNetwork/MultiBot.git</connection>
+        <developerConnection>scm:git:git@github.com:MultiCoreNetwork/MultiBot.git</developerConnection>
+        <url>git@github.com:MultiCoreNetwork/MultiBot</url>
+    </scm>
+
+    <issueManagement>
+        <system>GitHub</system>
+        <url>https://github.com/MultiCoreNetwork/MultiBot/issues</url>
+    </issueManagement>
+
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <archive>
+                        <index>true</index>
+                        <manifest>
+                            <mainClass>${groupId}.Bootstrap</mainClass>
+                            <addClasspath>true</addClasspath>
+                        </manifest>
+                        <manifestEntries>
+                            <mode>development</mode>
+                            <url>${project.url}</url>
+                            <key>value</key>
+                        </manifestEntries>
+                    </archive>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                    <finalName>${project.parent.name}-${project.parent.version}</finalName>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
